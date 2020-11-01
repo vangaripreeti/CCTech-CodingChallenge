@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Website</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="style_cctech.css">
+  
+</head>
+<body>
+	<div class="navbar">
+		<center>Gallery</center>
+	</div>
+	<center>
+		<div class="file-upload">
+		    <input class="file-upload__input" type="file" name="myFile[]" id="myFile" multiple>
+            <button class="btn" type="button" onchange="return fileValidation();">Upload</button>
+
+        </div>
+	</center>
+    <div id="imagePreview">
+    	<div class="preview-image">
+    	<div class="row">
+    		<div class="column">
+			<div class="polaroid">
+				<img src="Image 2.jpg" id="image-2.jpg" style="width:100%">
+				<div class="container">
+					<p>Image 2</p>
+				</div>
+			</div>
+			
+    		
+		</div>
+		<div class="column">
+			<div class="polaroid">
+				<img src="Image 2.jpg" id="image-2.jpg" style="width:100%">
+				<div class="container">
+					<p>Image 2</p>
+				</div>
+			</div>
+			
+		</div>
+		<div class="column">
+			<div class="polaroid">
+				<img src="Image 3.jpg" id="image-3.jpg" style="width:100%">
+				<div class="container">
+					<p>Image 3</p>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+</div>
+
+</div> 
+    
+     
+
+
+ 	
+
+	<div class="footer">
+		<p>Fullstack Challenge - 2020</p>
+	</div>
+
+
+
+
+   
+    <!-- Image preview -->
+    
+    <script> 
+
+    	
+        function fileValidation() { 
+            var fileInput =  
+                document.getElementById('myFile'); 
+              
+            var filePath = fileInput.value; 
+          
+            // Allowing file type 
+            var allowedExtensions =  
+                    /(\.jpg|\.jpeg|\.png)$/i; 
+              
+            if (!allowedExtensions.exec(filePath)) { 
+                alert('Invalid file type'); 
+                fileInput.value = ''; 
+                return false; 
+            }  
+            else  
+            { 
+            // Image preview 
+                if (fileInput.files && fileInput.files[0]) { 
+                    var reader = new FileReader(); 
+                    reader.onload = function(e) { 
+                        document.getElementById('imagePreview').innerHTML = '<img src="' + e.target.result + '"/>'; 
+                    }; 
+                      
+                    reader.readAsDataURL(fileInput.files[0]); 
+                } 
+            } 
+        } 
+  
+
+
+
+    	Array.prototype.forEach.call(document.querySelectorAll(".btn"),
+    		function(button){const hiddenInput = button.parentElement.querySelector(".file-upload__input");
+        button.addEventListener("click", function() {
+      hiddenInput.click();
+    });
+
+    hiddenInput.addEventListener("change", function() {
+      const filenameList = Array.prototype.map.call(hiddenInput.files, function( file) {
+        return file.name;
+      });
+    });
+  }
+);  </script> 
+</body> 
+  
+</html>
